@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns     = "http://www.w3.org/ns/widgets"
+        xmlns:gap = "http://phonegap.com/ns/1.0"
+        id        = "net.northmyrtle.vms"
+        version   = "1.0.0">
+    <name>NMA Touch Test</name>
+
+    <description>
+        Touch Test
+    </description>
+
+    <author href="http://www.northmyrtle.net" email="support@northmyrtle.net">
+        Northmyrtle Associates LLC
+    </author>
+    
+    <!--<feature name="http://api.phonegap.com/1.0/device" />-->
+    
+    <!--<gap:plugin name="com.megster.cordova.bluetoothserial" version="0.3.3" />-->
+    <!--<gap:plugin name="nl.x-services.plugins.insomnia" />-->
+    <!--<plugin name="nl.x-services.plugins.insomnia" source="pgb" />-->
+    
+    <!-- device required so we can detect if we are using iOS -->
+    <plugin name="cordova-plugin-device"        source="npm" spec="1.0.1" />
+    <plugin name="cordova-plugin-splashscreen"  source="npm" spec="2.1.0" />
+    <plugin name="cordova-plugin-geolocation"   spec="~2.4.0" />
+    
+    <preference name="permissions" value="none"/>
+    
+    <preference name="SplashScreen" value="splash" />
+    <preference name="SplashScreenDelay" value="5000" />
+    <preference name="auto-hide-splash-screen" value="false" />
+    <preference name="show-splash-screen-spinner" value="false" />
+    
+    <preference name="phonegap-version"     value="cli-6.3.0" />
+    <preference name="orientation"          value="default" />
+    <preference name="target-device"        value="universal" />
+    <preference name="fullscreen"           value="false" />
+    <preference name="webviewbounce"        value="false" />
+
+    <icon src="icon.png" />
+   
+</widget>
