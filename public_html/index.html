@@ -44,14 +44,45 @@
   
     <script type="text/javascript">
 
+    var controls = [];
     
-    alert("calling vms_gauge");
-    vmsGauge('main', 'Fuel GPH 1', '/flow/flowCount0',0.4755096,0,30,300,300,0,0);
-    vmsGauge('main', 'Fuel GPH 2', '/flow/flowCount0',0.4755096,0,30,300,300,0,0);
-   alert("called vms_gauge");
+    controls[0] = new vmsGauge('main', 'Fuel GPH 1', 'http://192.168.2.135:88/flow/flowCount0',0.4755096,0,30,300,300,0,0);
+    controls[1] = new vmsGauge('main', 'Fuel GPH 2', 'http://192.168.2.135:88/flow/flowCount0',0.4755096,0,30,300,300,0,0);
    
-        $(".draggable").draggable();
-        $(".gaugeFrame").draggable();
+    $(".draggable").draggable();
+    $(".gaugeFrame").draggable();
+        
+    setInterval('updateValues()', 1000);
+    ajaxSetup();      
+    
+    function updateValues(){
+
+    Object.keys(controls).forEach(function(key){
+        var control = controls[key];
+        $.ajax({
+            url: control.dataPath, 
+            timeout: 750,
+            success: function(data){
+//                console.log(control.dataPath + ' value ' + data);
+                control.setValue(data);
+                },
+            error: function(){
+//                console.log("error updating");
+                control.setValue(30);
+                }
+            });
+        });
+    };
+
+    function ajaxSetup(){
+        $.ajaxSetup({'beforeSend': function(xhr){
+             if (xhr.overrideMimeType)
+                 xhr.overrideMimeType("text/plain");
+             }
+        });
+};
+    
+    
     </script>
     
 </body>
