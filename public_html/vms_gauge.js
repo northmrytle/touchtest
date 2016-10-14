@@ -53,6 +53,7 @@ function vmsGauge(
     
     this.frame.setAttribute('id', name + 'GaugeFrame');
     this.frame.className = 'gaugeFrame';
+//    this.frame.className = 'draggable';
     this.frame.style.position = 'absolute';
     this.frame.style.top = top + 'px';
     this.frame.style.left = left + 'px';

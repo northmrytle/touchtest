@@ -7,6 +7,7 @@
  var controls = [];
         
   $.fn.draggable = function() {
+      alert("draggable called");
     var offset = null;
     var start = function(e) {
       var orig = e.originalEvent;

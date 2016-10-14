@@ -39,16 +39,19 @@
   <body>
     <div class="draggable">Drag me!</div>
     <div class="draggable">Drag me!</div>
-    <div id="main" class="draggable"></div>
+    <div id="main"></div>
     
   
     <script type="text/javascript">
-    $(".draggable").draggable();
+
+    
     alert("calling vms_gauge");
-    vmsGauge('main', 'Fuel GPH', '/flow/flowCount0',0.4755096,0,30,300,300,0,0);
-    alert("called vms_gauge");
-    
-    
+    vmsGauge('main', 'Fuel GPH 1', '/flow/flowCount0',0.4755096,0,30,300,300,0,0);
+    vmsGauge('main', 'Fuel GPH 2', '/flow/flowCount0',0.4755096,0,30,300,300,0,0);
+   alert("called vms_gauge");
+   
+        $(".draggable").draggable();
+        $(".gaugeFrame").draggable();
     </script>
     
 </body>
