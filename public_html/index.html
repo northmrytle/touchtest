@@ -3,8 +3,8 @@
   <head>
     <meta charset=utf-8 />
     <title>Drag n' drop touch demo - sewa.se</title>
-    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0; user-scalable=0;" />
-    
+           <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         
     <meta http-equiv="cache-control" content="max-age=0" />
     <meta http-equiv="cache-control" content="no-cache" />
     <meta http-equiv="expires" content="0" />
@@ -12,15 +12,19 @@
     <meta http-equiv="pragma" content="no-cache" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
+    <script src="raphael.2.1.0.min.js"></script>
     <script src="jquery-1.11.3.min.js"></script>
+    
+    <script type="text/javascript" src="dragDrop.js"></script>
+    <script type="text/javascript" src="vms_gauge.js"></script>
     
     <style type="text/css">
       .draggable {
         position: absolute;
         left: 30px;
         top: 30px;
-        width: 60px;
-        height: 60px;
+        width: 200px;
+        height: 200px;
         margin-left: -30px;
         margin-top: -30px;
 
@@ -35,31 +39,17 @@
   <body>
     <div class="draggable">Drag me!</div>
     <div class="draggable">Drag me!</div>
-  </body>
+    <div id="main" class="draggable"></div>
+    
+  
     <script type="text/javascript">
-      $.fn.draggable = function() {
-        var offset = null;
-        var start = function(e) {
-          var orig = e.originalEvent;
-          var pos = $(this).position();
-          offset = {
-            x: orig.changedTouches[0].pageX - pos.left,
-            y: orig.changedTouches[0].pageY - pos.top
-          };
-        };
-        var moveMe = function(e) {
-          e.preventDefault();
-          var orig = e.originalEvent;
-          $(this).css({
-            top: orig.changedTouches[0].pageY - offset.y,
-            left: orig.changedTouches[0].pageX - offset.x
-          });
-        };
-        this.bind("touchstart", start);
-        this.bind("touchmove", moveMe);
-      };
-
-      $(".draggable").draggable();
-      
+    $(".draggable").draggable();
+    alert("calling vms_gauge");
+    vmsGauge('main', 'Fuel GPH', '/flow/flowCount0',0.4755096,0,30,300,300,0,0);
+    alert("called vms_gauge");
+    
+    
     </script>
+    
+</body>
 </html>
